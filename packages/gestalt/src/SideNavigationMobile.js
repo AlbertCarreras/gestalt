@@ -1,5 +1,5 @@
 // @flow strict
-import { Fragment, type Node } from 'react';
+import { useRef, useEffect, Fragment, type Node } from 'react';
 import classnames from 'classnames';
 import Box from './Box.js';
 import Flex from './Flex.js';
@@ -25,6 +25,12 @@ export default function SideNavigationMobile({
 
   const { selectedMobileChildren } = useSideNavigation();
 
+  const dismissButtonRef = useRef(null);
+
+  useEffect(() => {
+    if (dismissButtonRef.current) dismissButtonRef.current.focus();
+  }, [dismissButtonRef]);
+
   return (
     <Box width="100%" height="100%" as="nav" aria-label={accessibilityLabel} color="default">
       <div
@@ -49,6 +55,7 @@ export default function SideNavigationMobile({
                       icon="cancel"
                       tooltip={dismissButton?.tooltip}
                       onClick={() => dismissButton?.onDismiss()}
+                      ref={dismissButtonRef}
                     />
                   </Flex.Item>
                 </Flex>
