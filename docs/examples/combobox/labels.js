@@ -36,7 +36,9 @@ export default function Example(): Node {
 
   const [errorMessage, setErrorMessage] = useState();
 
-  const handleOnBlur = ({ value }) => {
+  const handleOnBlur: $ElementType<React$ElementConfig<typeof ComboBox>, 'onBlur'> = ({
+    value,
+  }) => {
     if (value !== '' && !CATEGORIES.includes(value))
       setErrorMessage('Please, select a valid option');
   };

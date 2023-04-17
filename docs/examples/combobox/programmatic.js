@@ -41,7 +41,9 @@ export default function Example(): Node {
     setSuggestedOptions(CATEGORIES[currentCategory]);
   };
 
-  const handleOnChange = ({ value }) => {
+  const handleOnChange: $ElementType<React$ElementConfig<typeof ComboBox>, 'onChange'> = ({
+    value,
+  }) => {
     setSelectedOption();
     if (value) {
       setInputValue(value);
@@ -55,7 +57,9 @@ export default function Example(): Node {
     }
   };
 
-  const handleSelect = ({ item }) => {
+  const handleSelect: $ElementType<React$ElementConfig<typeof ComboBox>, 'onSelect'> = ({
+    item,
+  }) => {
     setInputValue(item.label);
     setSelectedOption(item);
     resetOptions();

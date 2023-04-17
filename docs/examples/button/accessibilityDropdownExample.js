@@ -7,7 +7,9 @@ export default function ActionDropdownExample(): Node {
   const [selected, setSelected] = useState(null);
   const anchorRef = useRef(null);
 
-  const onSelect = ({ item }) => setSelected(item);
+  const onSelect: $ElementType<React$ElementConfig<typeof Dropdown.Item>, 'onSelect'> = ({
+    item,
+  }) => setSelected(item);
 
   return (
     <Box padding={8} display="flex" justifyContent="center" width="100%">

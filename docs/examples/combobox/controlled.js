@@ -70,7 +70,9 @@ export default function Example(): Node {
   const [inputValue, setInputValue] = useState(usStatesOptions[5].label);
   const [selected, setSelected] = useState(usStatesOptions[5]);
 
-  const handleOnChange = ({ value }) => {
+  const handleOnChange: $ElementType<React$ElementConfig<typeof ComboBox>, 'onChange'> = ({
+    value,
+  }) => {
     setSelected();
     if (value) {
       setInputValue(value);
@@ -84,7 +86,9 @@ export default function Example(): Node {
     }
   };
 
-  const handleSelect = ({ item }) => {
+  const handleSelect: $ElementType<React$ElementConfig<typeof ComboBox>, 'onSelect'> = ({
+    item,
+  }) => {
     setInputValue(item.label);
     setSuggestedOptions(usStatesOptions);
     setSelected(item);
