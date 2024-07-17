@@ -211,7 +211,7 @@ export default function TextPage({ generatedDocGen }: { generatedDocGen: DocGen 
         `}
           title="Colors"
         >
-          <SandpackExample code={variantColors} name="Variants - Colors" />
+          <SandpackExample code={variantColors} name="Variants - Colors"  previewHeight={500}/>
         </MainSection.Subsection>
 
         <MainSection.Subsection

@@ -405,7 +405,9 @@ However, Link's underline style can be overridden at any time using the \`underl
           title="Inline"
         >
           <MainSection.Card
-            sandpackExample={<SandpackExample code={inline} name="Inline example" previewHeight={450} />}
+            sandpackExample={
+              <SandpackExample code={inline} name="Inline example" previewHeight={450} />
+            }
           />
         </MainSection.Subsection>
 

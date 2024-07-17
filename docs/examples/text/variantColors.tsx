@@ -30,6 +30,9 @@ export default function Example() {
         <Text color="recommendation" size="400">
           Recommendation
         </Text>
+        <Text color="link" size="400">
+          Link
+        </Text>
         <Text color="shopping" size="400">
           Shopping
         </Text>
