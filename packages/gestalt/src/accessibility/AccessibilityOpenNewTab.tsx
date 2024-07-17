@@ -8,12 +8,11 @@ import vrIcons from '../icons-vr-theme/index';
 import useInExperiment from '../useInExperiment';
 
 type Props = {
-  color: ComponentProps<typeof Icon>['color'];
   size: ComponentProps<typeof Icon>['size'];
 };
 
-export default function AccessibilityOpenNewTab({ size, color }: Props) {
-  const cs = classnames(styles.rtlSupport, styles[color ?? 'default'], styles.icon);
+export default function AccessibilityOpenNewTab({ size }: Props) {
+  const cs = classnames(styles.rtlSupport, styles.inheritColor, styles.icon);
   const { accessibilityNewTabLabel } = useDefaultLabelContext('Link');
   const isInExperiment = useInExperiment({
     webExperimentName: 'web_gestalt_visualRefresh',

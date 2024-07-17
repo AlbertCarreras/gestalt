@@ -178,6 +178,7 @@ const LinkWithForwardRef = forwardRef<HTMLAnchorElement, Props>(function Link(
   const { isFocusVisible } = useFocusVisible();
 
   const isInline = ['inline', 'inlineBlock'].includes(display);
+  const isStandalone = !isInline;
 
   let underlineStyle = isInline ? 'always' : 'hover';
 
@@ -209,8 +210,8 @@ const LinkWithForwardRef = forwardRef<HTMLAnchorElement, Props>(function Link(
     layoutStyles[display],
     {
       [styles.inheritTextColor]: isInline,
-      [styles.linkTextColor]: !isInline,
-      [styles.semiboldWeightText]: !isInline,
+      [styles.linkTextColor]: isStandalone,
+      [styles.semiboldWeightText]: isStandalone,
       [styles.underline]: underlineStyle === 'always',
       [styles.noUnderline]: underlineStyle === 'hover' || underlineStyle === 'none',
       [styles.hoverUnderline]: underlineStyle === 'hover',
@@ -243,6 +244,14 @@ const LinkWithForwardRef = forwardRef<HTMLAnchorElement, Props>(function Link(
     accessibilityLabel,
     accessibilityNewTabLabel,
   });
+
+  let iconColor: ComponentProps<typeof AccessibilityOpenNewTab>['color'] =
+    isInVRExperiment && isStandalone ? 'link' : 'default';
+
+  iconColor =
+    typeof externalLinkIcon === 'object' && externalLinkIcon?.color
+      ? externalLinkIcon?.color
+      : iconColor;
 
   return (
     <a
@@ -292,9 +301,6 @@ const LinkWithForwardRef = forwardRef<HTMLAnchorElement, Props>(function Link(
       {externalLinkIcon === 'none' ? null : (
         <Box display="inlineBlock" marginStart={1}>
           <AccessibilityOpenNewTab
-            color={
-              externalLinkIcon === 'default' ? 'default' : externalLinkIcon?.color ?? 'default'
-            }
             size={
               externalLinkIcon === 'default'
                 ? externalLinkIconMap['300']

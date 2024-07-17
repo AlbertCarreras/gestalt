@@ -18,7 +18,12 @@ html[dir="rtl"] .rtlSupport {
   transform-origin: center;
 }
 
+
 /* semantic icon colors */
+
+.inheritColor {
+    color: inherit;
+}
 
 .inverse {
   color: var(--color-icon-inverse);
@@ -54,6 +59,18 @@ html[dir="rtl"] .rtlSupport {
 
 .shopping {
   color: var(--color-icon-shopping);
+}
+
+.link {
+  color: var(--sema-color-text-link);
+}
+
+.link:hover {
+  color: var(--sema-color-hover-text-link);
+}
+
+.link:active {
+  color: var(--sema-color-pressed-text-link);
 }
 
 .info {
