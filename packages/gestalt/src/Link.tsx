@@ -16,9 +16,10 @@ import { useGlobalEventsHandlerContext } from './contexts/GlobalEventsHandlerPro
 import focusStyles from './Focus.css';
 import getRoundingClassName from './getRoundingClassName';
 import layoutStyles from './Layout.css';
-import styles from './Link.css';
 import touchableStyles from './TapArea.css';
 import Text from './Text';
+import styles from './Text.css';
+import typographyStyles from './Typography.css';
 import useFocusVisible from './useFocusVisible';
 import useInExperiment from './useInExperiment';
 import useTapFeedback, { keyPressShouldTriggerTap } from './useTapFeedback';
@@ -185,36 +186,36 @@ const LinkWithForwardRef = forwardRef<HTMLAnchorElement, Props>(function Link(
   }
 
   const className = classnames(
-    styles.link,
+    styles.noOutline,
     styles.inheritTextColor,
     touchableStyles.tapTransition,
     getRoundingClassName(rounding),
     layoutStyles[display],
     {
-      [styles.underline]: underlineStyle === 'always',
-      [styles.hoverNoUnderline]: underlineStyle === 'always',
-      [styles.noUnderline]: underlineStyle === 'hover' || underlineStyle === 'none',
+      [typographyStyles.underline]: underlineStyle === 'always',
+      [typographyStyles.noUnderline]: underlineStyle === 'hover' || underlineStyle === 'none',
       [styles.hoverUnderline]: underlineStyle === 'hover',
-      [focusStyles.hideOutline]: !isFocusVisible,
+      [styles.hoverNoUnderline]: underlineStyle === 'always',
       [styles.outlineFocus]: isFocusVisible,
+      [focusStyles.hideOutline]: !isFocusVisible,
       [touchableStyles.tapCompress]: tapStyle === 'compress' && isTapping,
     },
   );
 
   const VRclassName = classnames(
-    styles.link,
+    styles.noOutline,
     touchableStyles.tapTransition,
     getRoundingClassName(rounding),
     layoutStyles[display],
     {
       [styles.inheritTextColor]: isInline,
-      [styles.linkTextColor]: isStandalone,
-      [styles.semiboldWeightText]: isStandalone,
-      [styles.underline]: underlineStyle === 'always',
-      [styles.noUnderline]: underlineStyle === 'hover' || underlineStyle === 'none',
+      [styles.standalone]: isStandalone,
+      [typographyStyles.fontWeightSemiBold]: isStandalone,
+      [typographyStyles.underline]: underlineStyle === 'always',
+      [typographyStyles.noUnderline]: underlineStyle === 'hover' || underlineStyle === 'none',
       [styles.hoverUnderline]: underlineStyle === 'hover',
-      [focusStyles.hideOutline]: !isFocusVisible,
       [styles.outlineFocusVR]: isFocusVisible,
+      [focusStyles.hideOutline]: !isFocusVisible,
       [touchableStyles.tapCompress]: tapStyle === 'compress' && isTapping,
     },
   );

@@ -3,6 +3,7 @@ import cx from 'classnames';
 import styles from './Text.css';
 import { semanticColors } from './textTypes';
 import typography from './Typography.css';
+import useInExperiment from './useInExperiment';
 
 function isNotNullish(val?: number | null): boolean {
   return val !== null && val !== undefined;
@@ -98,6 +99,11 @@ const TextWithForwardRef = forwardRef<HTMLElement, Props>(function Text(
   ref,
 ): ReactElement {
   const colorClass = semanticColors.includes(color) && styles[color];
+
+  // const isInVRExperiment = useInExperiment({
+  //   webExperimentName: 'web_gestalt_visualRefresh',
+  //   mwebExperimentName: 'web_gestalt_visualRefresh',
+  // });
 
   const getWordBreakStyle = (): string | undefined => {
     if (overflow === 'breakAll') {

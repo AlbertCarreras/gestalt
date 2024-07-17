@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from 'gestalt';
+import { Box, Flex,Text } from 'gestalt';
 
 export default function Example() {
   return (

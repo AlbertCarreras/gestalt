@@ -206,12 +206,15 @@ export default function TextPage({ generatedDocGen }: { generatedDocGen: DocGen 
 
         <MainSection.Subsection
           description={`
-        You can specify which color you want for your text. Most colors change in dark mode, but \`light\` and \`dark\` are available when no switch is desired.
+        You can specify which color you want for your text.
 
+        Most colors change in dark mode, but \`light\` and \`dark\` are available when no switch is desired.
+
+        Note: 'link' color is not necessary when using [Link](/web/link). Text detects any children Link and applies color accordingly based on best practices for Links.
         `}
           title="Colors"
         >
-          <SandpackExample code={variantColors} name="Variants - Colors"  previewHeight={500}/>
+          <SandpackExample code={variantColors} name="Colors"  previewHeight={500}/>
         </MainSection.Subsection>
 
         <MainSection.Subsection
