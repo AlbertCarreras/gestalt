@@ -71,10 +71,12 @@ declare const icons: Readonly<{
     'captions-outline': any;
     check: any;
     'check-circle': any;
+    'check-circle-fill': any;
     'chevron-up-circle': any;
     circle: any;
     'circle-ellipsis': any;
     'circle-information-fill': any;
+    'circle-initializing': any;
     clear: any;
     clips: any;
     clock: any;
@@ -241,6 +243,7 @@ declare const icons: Readonly<{
     replace: any;
     report: any;
     rewind: any;
+    rocketship: any;
     rotate: any;
     saturation: any;
     'save-outline': any;

@@ -15,7 +15,6 @@ import { useDefaultLabelContext } from './contexts/DefaultLabelProvider';
 import { useGlobalEventsHandlerContext } from './contexts/GlobalEventsHandlerProvider';
 import focusStyles from './Focus.css';
 import getRoundingClassName from './getRoundingClassName';
-import Icon from './Icon';
 import layoutStyles from './Layout.css';
 import styles from './Link.css';
 import touchableStyles from './TapArea.css';
@@ -40,7 +39,6 @@ type ExternalLinkIcon =
   | 'none'
   | 'default'
   | {
-      color: ComponentProps<typeof Icon>['color'];
       size: ComponentProps<typeof Text>['size'];
     };
 
@@ -244,14 +242,6 @@ const LinkWithForwardRef = forwardRef<HTMLAnchorElement, Props>(function Link(
     accessibilityLabel,
     accessibilityNewTabLabel,
   });
-
-  let iconColor: ComponentProps<typeof AccessibilityOpenNewTab>['color'] =
-    isInVRExperiment && isStandalone ? 'link' : 'default';
-
-  iconColor =
-    typeof externalLinkIcon === 'object' && externalLinkIcon?.color
-      ? externalLinkIcon?.color
-      : iconColor;
 
   return (
     <a
