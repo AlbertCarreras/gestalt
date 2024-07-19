@@ -4,6 +4,7 @@ import styles from './Heading.css';
 import colors from './Text.css';
 import { semanticColors } from './textTypes';
 import typographyStyle from './Typography.css';
+import useInExperiment from './useInExperiment';
 
 function isNotNullish(val?: number | null): boolean {
   return val !== null && val !== undefined;
@@ -85,6 +86,11 @@ export default function Heading({
   overflow = 'breakWord',
   size = '600',
 }: Props) {
+  const isInVRExperiment = useInExperiment({
+    webExperimentName: 'web_gestalt_visualRefresh',
+    mwebExperimentName: 'web_gestalt_visualRefresh',
+  });
+
   const getWordBreakStyle = (): string | undefined => {
     if (overflow === 'breakAll') {
       return typographyStyle.breakAll;
@@ -98,8 +104,14 @@ export default function Heading({
     return undefined;
   };
 
-  const cs = cx(
+  const className = cx(
     styles.Heading,
+    isInVRExperiment && size === '100' && styles.style100,
+    isInVRExperiment && size === '200' && styles.style200,
+    isInVRExperiment && size === '300' && styles.style300,
+    isInVRExperiment && size === '400' && styles.style400,
+    isInVRExperiment && size === '500' && styles.style500,
+    isInVRExperiment && size === '600' && styles.style600,
     typographyStyle[`fontSize${size}`],
     color && semanticColors.includes(color) && colors[color],
     align === 'center' && typographyStyle.alignCenter,
@@ -114,7 +126,7 @@ export default function Heading({
   );
 
   const headingLevel = accessibilityLevel || defaultHeadingLevels[size];
-  let newProps = { className: cs };
+  let newProps = { className };
   if (id) {
     // @ts-expect-error - TS2322 - Type '{ id: string; className: string; }' is not assignable to type '{ className: string; }'.
     newProps = { ...newProps, id };

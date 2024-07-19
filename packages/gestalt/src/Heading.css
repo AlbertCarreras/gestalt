@@ -3,3 +3,39 @@
   margin-bottom: 0;
   margin-top: 0;
 }
+
+.style100 {
+  font-weight: var(--sema-font-weight-heading-bold);
+  letter-spacing: 0.5px;
+  line-height: var(--sema-font-line-height-heading-XXS);
+}
+
+.style200 {
+  font-weight: var(--sema-font-weight-heading-bold);
+  letter-spacing: 0.5px;
+  line-height: var(--sema-font-line-height-heading-XXS);
+}
+
+.style300 {
+  font-weight: var(--sema-font-weight-heading-medium);
+  letter-spacing: 0;
+  line-height: var(--sema-font-line-height-heading-XS);
+}
+
+.style400 {
+  font-weight: var(--sema-font-weight-heading-medium);
+  letter-spacing: 0;
+  line-height: var(--sema-font-line-height-heading-SM);
+}
+
+.style500 {
+  font-weight: var(--sema-font-weight-heading-medium);
+  letter-spacing: 0;
+  line-height: var(--sema-font-line-height-heading-MD);
+}
+
+.style600 {
+  font-weight: var(--sema-font-weight-heading-medium);
+  letter-spacing: 1px;
+  line-height: var(--sema-font-line-height-heading-LG);
+}
