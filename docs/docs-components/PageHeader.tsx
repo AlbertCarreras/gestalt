@@ -53,9 +53,8 @@ type Props = {
   folderName?: string;
   margin?: 'default' | 'none';
   name: string;
-  platform?: 'android' | 'ios' | 'web';
+  platform?: 'web';
   bannerSlim?: ReactNode;
-  bannerSlimExperiment?: ReactNode;
   type?: 'guidelines' | 'component' | 'utility';
   pdocsLink?: boolean;
 };
@@ -71,7 +70,6 @@ export default function PageHeader({
   name,
   platform,
   bannerSlim,
-  bannerSlimExperiment,
   type = 'component',
 }: Props) {
   const sourcePathName = folderName ?? fileName ?? name;
@@ -215,10 +213,9 @@ export default function PageHeader({
               )}
             </Flex>
 
-            {(bannerSlim || bannerSlimExperiment) && (
+            {bannerSlim && (
               <Flex direction="column" gap={4}>
                 {bannerSlim}
-                {bannerSlimExperiment}
               </Flex>
             )}
 

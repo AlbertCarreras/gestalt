@@ -1,8 +1,15 @@
 import { Cache } from './Cache';
+import getColumnCount, { DEFAULT_LAYOUT_DEFAULT_COLUMN_WIDTH } from './getColumnCount';
 import { getHeightAndGutter, offscreen } from './layoutHelpers';
 import mindex from './mindex';
-import multiColumnLayout, { ColumnSpanConfig } from './multiColumnLayout';
+import multiColumnLayout, {
+  ColumnSpanConfig,
+  ModulePositioningConfig,
+  ResponsiveModuleConfig,
+} from './multiColumnLayout';
 import { Align, Layout, Position } from './types';
+
+const defaultGetResponsiveModuleConfig = (): ResponsiveModuleConfig => undefined;
 
 const calculateCenterOffset = ({
   align,
@@ -37,27 +44,33 @@ const calculateCenterOffset = ({
 const defaultLayout =
   <T>({
     align,
-    columnWidth = 236,
-    gutter = 14,
+    columnWidth = DEFAULT_LAYOUT_DEFAULT_COLUMN_WIDTH,
+    gutter,
     layout,
     minCols = 2,
     rawItemCount,
     width,
     measurementCache,
     _getColumnSpanConfig,
+    _getModulePositioningConfig,
+    _getResponsiveModuleConfigForSecondItem,
+    _multiColPositionAlgoV2,
     ...otherProps
   }: {
     columnWidth?: number;
-    gutter?: number;
+    gutter: number;
     align: Align;
     layout: Layout;
     minCols?: number;
     rawItemCount: number;
     width?: number | null | undefined;
+    originalItems: ReadonlyArray<T>;
     positionCache: Cache<T, Position>;
     measurementCache: Cache<T, number>;
     _getColumnSpanConfig?: (item: T) => ColumnSpanConfig;
-    earlyBailout?: (columnSpan: number) => number;
+    _getResponsiveModuleConfigForSecondItem?: (item: T) => ResponsiveModuleConfig;
+    _multiColPositionAlgoV2?: boolean;
+    _getModulePositioningConfig?: (gridSize: number, moduleSize: number) => ModulePositioningConfig;
     logWhitespace?: (
       additionalWhitespace: ReadonlyArray<number>,
       numberOfIterations: number,
@@ -70,7 +83,13 @@ const defaultLayout =
     }
 
     const columnWidthAndGutter = columnWidth + gutter;
-    const columnCount = Math.max(Math.floor((width + gutter) / columnWidthAndGutter), minCols);
+    const columnCount = getColumnCount({
+      gutter,
+      columnWidth,
+      width,
+      minCols,
+      layout,
+    });
     // the total height of each column
     const heights = new Array<number>(columnCount).fill(0);
 
@@ -93,6 +112,10 @@ const defaultLayout =
           gutter,
           measurementCache,
           _getColumnSpanConfig,
+          _getResponsiveModuleConfigForSecondItem:
+            _getResponsiveModuleConfigForSecondItem ?? defaultGetResponsiveModuleConfig,
+          _multiColPositionAlgoV2,
+          _getModulePositioningConfig,
           ...otherProps,
         })
       : items.map((item) => {

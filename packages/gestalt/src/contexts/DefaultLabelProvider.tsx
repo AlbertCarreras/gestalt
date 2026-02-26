@@ -31,6 +31,23 @@ export type DefaultLabelContextType = {
     iconAccessibilityLabelWarning: string;
     iconAccessibilityLabelSuccess: string;
   };
+  ButtonSocial: {
+    textLoginEmail: string;
+    textLoginFacebook: string;
+    textLoginGoogle: string;
+    textLoginApple: string;
+    textLoginLine: string;
+    textContinueEmail: string;
+    textContinueFacebook: string;
+    textContinueGoogle: string;
+    textContinueApple: string;
+    textContinueLine: string;
+    textSignupEmail: string;
+    textSignupFacebook: string;
+    textSignupGoogle: string;
+    textSignupApple: string;
+    textSignupLine: string;
+  };
   ChartGraph: {
     accessibilityLabelPrefixText: string;
     defaultViewText: string;
@@ -95,6 +112,9 @@ export type DefaultLabelContextType = {
     iconAccessibilityLabelRecommendation: string;
     iconAccessibilityLabelWarning: string;
     iconAccessibilityLabelSuccess: string;
+  };
+  SearchField: {
+    accessibilityClearButtonLabel: string;
   };
   Spinner: {
     accessibilityLabel: string;
@@ -161,6 +181,23 @@ export const fallbackLabels: DefaultLabelContextType = {
     iconAccessibilityLabelWarning: 'Warning',
     iconAccessibilityLabelSuccess: 'Success',
   },
+  ButtonSocial: {
+    textLoginEmail: 'Login with Email',
+    textLoginFacebook: 'Login with Facebook',
+    textLoginGoogle: 'Login with Google',
+    textLoginApple: 'Login with Apple',
+    textLoginLine: 'Login with Line',
+    textContinueEmail: 'Continue with Email',
+    textContinueFacebook: 'Continue with Facebook',
+    textContinueGoogle: 'Continue with Google',
+    textContinueApple: 'Continue with Apple',
+    textContinueLine: 'Continue with Line',
+    textSignupEmail: 'Sign up with Email',
+    textSignupFacebook: 'Sign up with Facebook',
+    textSignupGoogle: 'Sign up with Google',
+    textSignupApple: 'Sign up with Apple',
+    textSignupLine: 'Sign up with Line',
+  },
   ChartGraph: {
     accessibilityLabelPrefixText: 'ChartGraph',
     defaultViewText: 'Default view mode',
@@ -187,6 +224,9 @@ export const fallbackLabels: DefaultLabelContextType = {
   DateRange: {
     cancelText: 'Cancel',
     applyText: 'Apply',
+  },
+  HelpButton: {
+    tooltipMessage: 'Click to learn more',
   },
   Link: {
     accessibilityNewTabLabel: 'Opens a new tab',
@@ -226,6 +266,12 @@ export const fallbackLabels: DefaultLabelContextType = {
     iconAccessibilityLabelWarning: 'Warning',
     iconAccessibilityLabelSuccess: 'Success',
   },
+  BannerUpsell: {
+    accessibilityDismissButtonLabel: 'Dismiss banner',
+  },
+  SearchField: {
+    accessibilityClearButtonLabel: 'Clear input',
+  },
   Spinner: {
     accessibilityLabel: 'Loading',
   },
@@ -247,9 +293,6 @@ export const fallbackLabels: DefaultLabelContextType = {
     accessibilityHidePasswordLabel: 'Hide password',
     accessibilityShowPasswordLabel: 'Show password',
   },
-  HelpButton: {
-    tooltipMessage: 'Click to learn more',
-  },
 
   Toast: {
     accessibilityDismissButtonLabel: 'Dismiss message',
@@ -257,9 +300,7 @@ export const fallbackLabels: DefaultLabelContextType = {
     accessibilityIconErrorLabel: 'Error message',
     accessibilityProcessingLabel: 'Processing message',
   },
-  BannerUpsell: {
-    accessibilityDismissButtonLabel: 'Dismiss banner',
-  },
+
   Video: {
     accessibilityMaximizeLabel: 'Maximize',
     accessibilityMinimizeLabel: 'Minimize',

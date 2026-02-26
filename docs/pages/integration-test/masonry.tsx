@@ -1,8 +1,11 @@
 import { ReactElement, useEffect, useState } from 'react';
 import LazyHydrate from 'react-lazy-hydration';
+import generateResPonsiveModuleItems from 'docs/integration-test-helpers/masonry/items-utils/generateResponsiveModuleItems';
 import { useRouter } from 'next/router';
-import { ColorSchemeProvider, Masonry, MasonryV2 } from 'gestalt';
+import { ColorSchemeProvider, DesignTokensProvider, Masonry, MasonryV2 } from 'gestalt';
 import generateExampleItems from '../../integration-test-helpers/masonry/items-utils/generateExampleItems';
+import generateFixedTreeColumnExampleItems from '../../integration-test-helpers/masonry/items-utils/generateFixedTreeColumnExampleItems';
+import generateMultiColumnExampleItems from '../../integration-test-helpers/masonry/items-utils/generateMultiColumnExampleItems';
 import generateRealisticExampleItems from '../../integration-test-helpers/masonry/items-utils/generateRealisticExampleItems';
 import getRandomNumberGenerator from '../../integration-test-helpers/masonry/items-utils/getRandomNumberGenerator';
 import pinHeights, {
@@ -69,6 +72,7 @@ export default function TestPage({
   // These should match playwright/masonry/utils/getServerURL.ts
   const {
     constrained,
+    darkMode,
     deferMount,
     dynamicHeights,
     dynamicHeightsV2,
@@ -76,17 +80,53 @@ export default function TestPage({
     experimental,
     finiteLength,
     flexible,
+    fixedThreeColItems,
     logWhitespace,
     manualFetch,
+    multiColPositionAlgoV2,
+    multiColTest,
     noScroll,
     offsetTop,
     realisticPinHeights,
+    responsiveModuleSecondItem,
+    responsiveModuleInsertIntermediate,
+    responsiveModuleRemoveMulticolumn,
     scrollContainer,
     twoColItems,
-    virtualize,
-    virtualBoundsTop,
     virtualBoundsBottom,
-  } = router.query;
+    virtualBoundsTop,
+    virtualize,
+  } = router.query as Record<string, string>;
+
+  const constrainedValue = booleanize(constrained ?? '');
+  const darkModeValue = booleanize(darkMode ?? '');
+  const deferMountValue = booleanize(deferMount ?? '');
+  const dynamicHeightsValue = booleanize(dynamicHeights ?? '');
+  const dynamicHeightsV2Value = booleanize(dynamicHeightsV2 ?? '');
+  const externalCacheValue = booleanize(externalCache ?? '');
+  const experimentalValue = booleanize(experimental ?? '');
+  const finiteLengthValue = booleanize(finiteLength ?? '');
+  const flexibleValue = booleanize(flexible ?? '');
+  const fixedThreeColItemsValue = booleanize(fixedThreeColItems ?? '');
+  const logWhitespaceValue = booleanize(logWhitespace ?? '');
+  const manualFetchValue = booleanize(manualFetch ?? '');
+  const multiColPositionAlgoV2Value = booleanize(multiColPositionAlgoV2 ?? '');
+  const multiColTestValue = booleanize(multiColTest ?? '');
+  const noScrollValue = booleanize(noScroll ?? '');
+  const offsetTopValue = Number(offsetTop);
+  const realisticPinHeightsValue = booleanize(realisticPinHeights ?? '');
+  const responsiveModuleSecondItemValue = booleanize(responsiveModuleSecondItem ?? '');
+  const responsiveModuleInsertIntermediateValue = booleanize(
+    responsiveModuleInsertIntermediate ?? '',
+  );
+  const responsiveModuleRemoveMulticolumnValue = booleanize(
+    responsiveModuleRemoveMulticolumn ?? '',
+  );
+  const scrollContainerValue = booleanize(scrollContainer ?? '');
+  const twoColItemsValue = booleanize(twoColItems ?? '');
+  const virtualBoundsBottomValue = Number(virtualBoundsBottom);
+  const virtualBoundsTopValue = Number(virtualBoundsTop);
+  const virtualizeValue = booleanize(virtualize ?? '');
 
   // Generate a sample of realistic pin heights
   const pinHeightsSample = randomNumberSeeds.map((randomNumberSeed) =>
@@ -94,8 +134,7 @@ export default function TestPage({
   );
 
   // For some tests, we want to defer hydration and trigger it manually
-  // @ts-expect-error - TS2345 - Argument of type 'string | string[] | undefined' is not assignable to parameter of type 'string'.
-  const [ssrOnly, setSSROnly] = useState(booleanize(deferMount));
+  const [ssrOnly, setSSROnly] = useState(deferMountValue);
   useEffect(() => {
     const handleTriggerMount = () => {
       setSSROnly(false);
@@ -104,52 +143,61 @@ export default function TestPage({
     return () => {
       window.removeEventListener('trigger-mount', handleTriggerMount);
     };
-  }, [deferMount]);
+  }, [deferMountValue]);
+
+  const getInitialItems = () => {
+    if (responsiveModuleSecondItemValue) {
+      return generateResPonsiveModuleItems({
+        name: 'ResponsiveModuleItems',
+        insertIntermediateItem: responsiveModuleInsertIntermediateValue,
+        removeMulticolumnItem: responsiveModuleRemoveMulticolumnValue,
+      });
+    }
+    if (multiColTestValue) {
+      return generateMultiColumnExampleItems({ name: 'MultiColTest' });
+    }
+    if (fixedThreeColItemsValue) {
+      return generateFixedTreeColumnExampleItems({ name: 'FixedThreeColItems' });
+    }
+    if (realisticPinHeightsValue) {
+      return generateRealisticExampleItems({
+        name: 'InitialPin',
+        pinHeightsSample,
+      });
+    }
+    return generateExampleItems({ name: 'InitialPin' });
+  };
 
   return (
-    <ColorSchemeProvider colorScheme="light">
-      <MaybeLazyHydrate ssrOnly={ssrOnly}>
-        {/* @ts-expect-error - TS2769 - No overload matches this call. */}
-        <MasonryContainer
-          // @ts-expect-error - TS2345 - Argument of type 'string | string[] | undefined' is not assignable to parameter of type 'string'.
-          constrained={booleanize(constrained)}
-          dynamicHeights={dynamicHeights}
-          dynamicHeightsV2={dynamicHeightsV2}
-          // @ts-expect-error - TS2345 - Argument of type 'string | string[] | undefined' is not assignable to parameter of type 'string'.
-          externalCache={booleanize(externalCache)}
-          // @ts-expect-error - TS2345 - Argument of type 'string | string[] | undefined' is not assignable to parameter of type 'string'.
-          finiteLength={booleanize(finiteLength)}
-          // @ts-expect-error - TS2345 - Argument of type 'string | string[] | undefined' is not assignable to parameter of type 'string'.
-          flexible={booleanize(flexible)}
-          initialItems={
-            realisticPinHeights
-              ? generateRealisticExampleItems({
-                  name: 'InitialPin',
-                  pinHeightsSample,
-                })
-              : generateExampleItems({ name: 'InitialPin' })
-          }
-          // @ts-expect-error - TS2345 - Argument of type 'string | string[] | undefined' is not assignable to parameter of type 'string'.
-          logWhitespace={booleanize(logWhitespace)}
-          // @ts-expect-error - TS2345 - Argument of type 'string | string[] | undefined' is not assignable to parameter of type 'string'.
-          manualFetch={booleanize(manualFetch)}
-          MasonryComponent={experimental ? MasonryV2 : Masonry}
-          measurementStore={measurementStore}
-          // @ts-expect-error - TS2345 - Argument of type 'string | string[] | undefined' is not assignable to parameter of type 'string'.
-          noScroll={booleanize(noScroll)}
-          offsetTop={offsetTop}
-          pinHeightsSample={realisticPinHeights ? pinHeightsSample : undefined}
-          positionStore={positionStore}
-          // @ts-expect-error - TS2345 - Argument of type 'string | string[] | undefined' is not assignable to parameter of type 'string'.
-          scrollContainer={booleanize(scrollContainer)}
-          // @ts-expect-error - TS2345 - Argument of type 'string | string[] | undefined' is not assignable to parameter of type 'string'.
-          twoColItems={booleanize(twoColItems)}
-          virtualBoundsBottom={virtualBoundsBottom}
-          virtualBoundsTop={virtualBoundsTop}
-          // @ts-expect-error - TS2345 - Argument of type 'string | string[] | undefined' is not assignable to parameter of type 'string'.
-          virtualize={booleanize(virtualize)}
-        />
-      </MaybeLazyHydrate>
+    <ColorSchemeProvider colorScheme={darkModeValue ? 'dark' : 'light'}>
+      <DesignTokensProvider>
+        <MaybeLazyHydrate ssrOnly={ssrOnly}>
+          <MasonryContainer
+            constrained={constrainedValue}
+            dynamicHeights={dynamicHeightsValue}
+            dynamicHeightsV2={dynamicHeightsV2Value}
+            externalCache={externalCacheValue}
+            finiteLength={finiteLengthValue}
+            flexible={flexibleValue}
+            initialItems={getInitialItems()}
+            logWhitespace={logWhitespaceValue}
+            manualFetch={manualFetchValue}
+            MasonryComponent={experimentalValue ? MasonryV2 : Masonry}
+            measurementStore={measurementStore}
+            multiColPositionAlgoV2={multiColPositionAlgoV2Value}
+            multiColTest={multiColTestValue}
+            noScroll={noScrollValue}
+            offsetTop={offsetTopValue}
+            pinHeightsSample={realisticPinHeightsValue ? pinHeightsSample : undefined}
+            positionStore={positionStore}
+            scrollContainer={scrollContainerValue}
+            twoColItems={twoColItemsValue}
+            virtualBoundsBottom={virtualBoundsBottomValue}
+            virtualBoundsTop={virtualBoundsTopValue}
+            virtualize={virtualizeValue}
+          />
+        </MaybeLazyHydrate>
+      </DesignTokensProvider>
     </ColorSchemeProvider>
   );
 }

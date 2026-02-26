@@ -1,26 +1,41 @@
 import { Cache } from './Cache';
+import getColumnCount, { FULL_WIDTH_LAYOUT_DEFAULT_IDEAL_COLUMN_WIDTH } from './getColumnCount';
 import { getHeightAndGutter } from './layoutHelpers';
 import mindex from './mindex';
-import multiColumnLayout, { ColumnSpanConfig } from './multiColumnLayout';
-import { Position } from './types';
+import multiColumnLayout, {
+  ColumnSpanConfig,
+  ModulePositioningConfig,
+  ResponsiveModuleConfig,
+} from './multiColumnLayout';
+import { Layout, Position } from './types';
+
+const defaultGetResponsiveModuleConfig = (): ResponsiveModuleConfig => undefined;
 
 const fullWidthLayout = <T>({
   width,
-  idealColumnWidth = 240,
-  gutter = 0,
+  idealColumnWidth = FULL_WIDTH_LAYOUT_DEFAULT_IDEAL_COLUMN_WIDTH,
+  gutter,
   minCols = 2,
+  layout,
   measurementCache,
   _getColumnSpanConfig,
+  _getModulePositioningConfig,
+  _getResponsiveModuleConfigForSecondItem,
+  _multiColPositionAlgoV2,
   ...otherProps
 }: {
   idealColumnWidth?: number;
-  gutter?: number;
+  gutter: number;
   minCols?: number;
+  layout: Layout;
   width?: number | null | undefined;
   positionCache: Cache<T, Position>;
   measurementCache: Cache<T, number>;
+  originalItems: ReadonlyArray<T>;
   _getColumnSpanConfig?: (item: T) => ColumnSpanConfig;
-  earlyBailout?: (columnSpan: number) => number;
+  _getResponsiveModuleConfigForSecondItem?: (item: T) => ResponsiveModuleConfig;
+  _multiColPositionAlgoV2?: boolean;
+  _getModulePositioningConfig?: (gridSize: number, moduleSize: number) => ModulePositioningConfig;
   logWhitespace?: (
     additionalWhitespace: ReadonlyArray<number>,
     numberOfIterations: number,
@@ -37,11 +52,13 @@ const fullWidthLayout = <T>({
       }));
   }
 
-  // "This is kind of crazy!" - you
-  // Yes, indeed. The "guessing" here is meant to replicate the pass that the
-  // original implementation takes with CSS.
-  const colguess = Math.floor(width / idealColumnWidth);
-  const columnCount = Math.max(Math.floor((width - colguess * gutter) / idealColumnWidth), minCols);
+  const columnCount = getColumnCount({
+    gutter,
+    columnWidth: idealColumnWidth,
+    width,
+    minCols,
+    layout,
+  });
   const columnWidth = width / columnCount - gutter;
   const columnWidthAndGutter = columnWidth + gutter;
   const centerOffset = gutter / 2;
@@ -57,6 +74,10 @@ const fullWidthLayout = <T>({
           gutter,
           measurementCache,
           _getColumnSpanConfig,
+          _getModulePositioningConfig,
+          _getResponsiveModuleConfigForSecondItem:
+            _getResponsiveModuleConfigForSecondItem ?? defaultGetResponsiveModuleConfig,
+          _multiColPositionAlgoV2,
           ...otherProps,
         })
       : items.reduce<Array<any>>((acc, item) => {

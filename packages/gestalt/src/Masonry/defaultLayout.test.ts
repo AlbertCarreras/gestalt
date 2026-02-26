@@ -1,4 +1,5 @@
 import defaultLayout from './defaultLayout';
+import { DEFAULT_LAYOUT_DEFAULT_GUTTER } from './getColumnCount';
 import MeasurementStore from './MeasurementStore';
 import { Position } from './types';
 
@@ -27,11 +28,13 @@ describe.each([undefined, getColumnSpanConfig])('default layout tests', (_getCol
 
     const layout = defaultLayout({
       align: 'start',
+      gutter: DEFAULT_LAYOUT_DEFAULT_GUTTER,
       measurementCache: measurementStore,
       positionCache,
       layout: 'basic',
       minCols: 2,
       rawItemCount: items.length,
+      originalItems: items,
       width: 8000,
       _getColumnSpanConfig,
     });
@@ -58,11 +61,13 @@ describe.each([undefined, getColumnSpanConfig])('default layout tests', (_getCol
 
     const layout = defaultLayout({
       align: 'center',
+      gutter: DEFAULT_LAYOUT_DEFAULT_GUTTER,
       measurementCache: measurementStore,
       positionCache,
       layout: 'basic',
       minCols: 2,
       rawItemCount: items.length,
+      originalItems: items,
       width: 8000,
       _getColumnSpanConfig,
     });
@@ -90,11 +95,13 @@ describe.each([undefined, getColumnSpanConfig])('default layout tests', (_getCol
 
     const layout = defaultLayout({
       align: 'center',
+      gutter: DEFAULT_LAYOUT_DEFAULT_GUTTER,
       measurementCache: measurementStore,
       positionCache,
       layout: 'basicCentered',
       minCols: 2,
       rawItemCount: items.length,
+      originalItems: items,
       width: 8000,
       _getColumnSpanConfig,
     });
@@ -122,11 +129,13 @@ describe.each([undefined, getColumnSpanConfig])('default layout tests', (_getCol
 
     const layout = defaultLayout({
       align: 'end',
+      gutter: DEFAULT_LAYOUT_DEFAULT_GUTTER,
       measurementCache: measurementStore,
       positionCache,
       layout: 'basic',
       minCols: 2,
       rawItemCount: items.length,
+      originalItems: items,
       width: 8000,
       _getColumnSpanConfig,
     });
@@ -154,10 +163,12 @@ describe.each([undefined, getColumnSpanConfig])('default layout tests', (_getCol
 
     const layout = defaultLayout({
       align: 'start',
+      gutter: DEFAULT_LAYOUT_DEFAULT_GUTTER,
       measurementCache: measurementStore,
       positionCache,
       layout: 'basic',
       rawItemCount: items.length,
+      originalItems: items,
       width: 501,
       _getColumnSpanConfig,
     });
@@ -185,10 +196,12 @@ describe.each([undefined, getColumnSpanConfig])('default layout tests', (_getCol
 
     const layout = defaultLayout({
       align: 'start',
+      gutter: DEFAULT_LAYOUT_DEFAULT_GUTTER,
       measurementCache: measurementStore,
       positionCache,
       layout: 'basic',
       rawItemCount: items.length,
+      originalItems: items,
       width: 200,
       _getColumnSpanConfig,
     });
@@ -223,6 +236,7 @@ describe.each([undefined, getColumnSpanConfig])('default layout tests', (_getCol
         gutter: 0,
         layout: align === 'center' ? 'basicCentered' : 'basic',
         rawItemCount: items.length,
+        originalItems: items,
         width: 1000,
         _getColumnSpanConfig,
       })(items);
@@ -266,11 +280,13 @@ describe.each([undefined, getColumnSpanConfig])('default layout tests', (_getCol
 
     const layout = defaultLayout({
       align: 'end',
+      gutter: DEFAULT_LAYOUT_DEFAULT_GUTTER,
       measurementCache: measurementStore,
       positionCache,
       layout: 'basic',
       minCols: 2,
       rawItemCount: items.length,
+      originalItems: items,
       width: 1000,
       _getColumnSpanConfig,
     });

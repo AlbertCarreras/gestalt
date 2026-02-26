@@ -145,6 +145,12 @@
       "keywords": ["text", "sequence", "letter", "formatting"]
     },
     {
+      "name": "amazon",
+      "categories": ["Logo"],
+      "description": "Symbolizes amazon or its subsidiaries",
+      "keywords": ["aws"]
+    },
+    {
       "name": "android-share",
       "categories": ["Platform specific"],
       "description": "On Android, indicates the ability to share an element",
@@ -278,10 +284,22 @@
       "keywords": ["birthdate", "celebrate", "year"]
     },
     {
+      "name": "blur",
+      "categories": ["Creation"],
+      "description": "Indicates the ability to blur something.",
+      "keywords": ["soften", "fadecd s"]
+    },
+    {
       "name": "board",
       "categories": ["Utility and tools"],
       "description": "Indicates a board",
       "keywords": ["layout", "grid"]
+    },
+    {
+      "name": "bold",
+      "categories": ["Formatting"],
+      "description": "Indicates the ability to bold text",
+      "keywords": ["font", "markdown"]
     },
     {
       "name": "briefcase",
@@ -362,6 +380,12 @@
       "keywords": ["group"]
     },
     {
+      "name": "card-stack-refresh",
+      "categories": ["Object"],
+      "description": "Refreshes a collection of cards",
+      "keywords": ["group", "update", "new"]
+    },
+    {
       "name": "check",
       "categories": ["Platform specific"],
       "description": "Instead of a radio button on iOS, use the check icon",
@@ -431,6 +455,12 @@
       "keywords": ["erase", "x", "delete"]
     },
     {
+      "name": "clipboard",
+      "categories": ["Object"],
+      "description": "Indicates the ability to paste something",
+      "keywords": ["paste", "copy"]
+    },
+    {
       "name": "clock",
       "categories": ["Time"],
       "description": "Indicates time",
@@ -467,6 +497,12 @@
       "keywords": ["settings", "gear", "nut"]
     },
     {
+      "name": "cog-fill",
+      "categories": ["Controls"],
+      "description": "Indicates setting options are available.",
+      "keywords": ["settings", "gear", "nut"]
+    },
+    {
       "name": "collapse",
       "categories": [],
       "description": "Description pending",
@@ -489,6 +525,42 @@
       "categories": ["Utility and tools"],
       "description": "Indicates color split",
       "keywords": ["dual"]
+    },
+    {
+      "name": "compact-angled-pin",
+      "categories": ["Object"],
+      "description": "Indicates the number of times a Pin was saved to a board.",
+      "keywords": ["diagonal"]
+    },
+    {
+      "name": "compact-ellipsis",
+      "categories": ["navigation"],
+      "description": "Indicates an overflow menu.",
+      "keywords": ["...", "kebab", "more", "overflow", "menu", "meatballs"]
+    },
+    {
+      "name": "compact-maximize",
+      "categories": ["Arrows"],
+      "description": "Indicates the ability to maximize the view.",
+      "keywords": ["increase", "expand"]
+    },
+    {
+      "name": "compact-mute",
+      "categories": ["Controls"],
+      "description": "Indicates the ability to mute the audio.",
+      "keywords": ["sound", "off", "audio", "volume"]
+    },
+    {
+      "name": "compact-sound",
+      "categories": ["Controls"],
+      "description": "Indicates the ability to turn the audio on.",
+      "keywords": ["audio", "volume"]
+    },
+    {
+      "name": "compact-sound-slash",
+      "categories": ["Controls"],
+      "description": "Indicates the ability to mute audio.",
+      "keywords": ["audio", "volume", "off", "media", "mute"]
     },
     {
       "name": "compact-workflow-status-canceled",
@@ -521,6 +593,12 @@
       "keywords": ["direction", "explore"]
     },
     {
+      "name": "compass-fill",
+      "categories": ["Object"],
+      "description": "Indicates directions or exploration",
+      "keywords": ["direction", "explore"]
+    },
+    {
       "name": "compose",
       "categories": ["Utility and tools"],
       "description": "Indicates the ability to compose a new content",
@@ -545,6 +623,12 @@
       "keywords": ["payment"]
     },
     {
+      "name": "credit-card-plus",
+      "categories": ["Commerce"],
+      "description": "Indicates the ability to add a payment method or credit/debit card.",
+      "keywords": ["debit", "add", "payment"]
+    },
+    {
       "name": "crop",
       "categories": ["Utility and tools"],
       "description": "Indicates the ability to crop an image",
@@ -567,6 +651,12 @@
       "categories": ["Ads and measurement", "Utility and tools"],
       "description": "Indicates a data source for API conversion insights or a general database icon",
       "keywords": ["database", "conversion", "insights", "ad"]
+    },
+    {
+      "name": "deselect",
+      "categories": ["Creation"],
+      "description": "Indicates the ability to deselect something",
+      "keywords": ["remove", "selection", "minus"]
     },
     {
       "name": "desktop",
@@ -706,6 +796,12 @@
       "categories": [],
       "description": "Description pending",
       "keywords": []
+    },
+    {
+      "name": "ferris-wheel",
+      "categories": ["Object"],
+      "description": "Indicates Coachella",
+      "keywords": ["festival"]
     },
     {
       "name": "file-box",
@@ -935,6 +1031,12 @@
       "keywords": ["orientation", "picture", "photo"]
     },
     {
+      "name": "imessage",
+      "categories": ["Logo"],
+      "description": "Indicates a message from the imessage application",
+      "keywords": ["apple", "messaging"]
+    },
+    {
       "name": "impressum",
       "categories": ["Utility and tools"],
       "description": "Indicates a legal statement of ownership/authorship",
@@ -977,10 +1079,22 @@
       "keywords": ["social", "service", "share"]
     },
     {
+      "name": "instagram-stories",
+      "categories": ["Logo"],
+      "description": "Indicates branding for instagram stories",
+      "keywords": ["ig", "story"]
+    },
+    {
       "name": "invoice",
       "categories": ["Ads and measurement"],
       "description": "Indicates the ability to see or take action on an invoice",
       "keywords": ["receipt", "billing", "payment"]
+    },
+    {
+      "name": "italics",
+      "categories": ["Formatting"],
+      "description": "Indicates the ability to italicize text",
+      "keywords": ["font", "markdown"]
     },
     {
       "name": "kakao-talk",
@@ -1047,6 +1161,12 @@
       "categories": ["Utility and tools"],
       "description": "Indicates the ability to try a lipstick color",
       "keywords": ["mouth", "lipstick"]
+    },
+    {
+      "name": "list-bullets",
+      "categories": ["Formatting"],
+      "description": "Represents a bulleted list or the ability to add a bulleted list",
+      "keywords": ["dots", "markdown"]
     },
     {
       "name": "list-numbered",
@@ -1301,10 +1421,22 @@
       "keywords": ["move", "reorganize"]
     },
     {
+      "name": "qr-code",
+      "categories": ["Technology"],
+      "description": "Indicates a scannable qr code",
+      "keywords": ["authentication", "quick", "response", "barcode"]
+    },
+    {
       "name": "question-mark",
       "categories": ["Utility and tools"],
       "description": "Indicates help is available",
       "keywords": ["help", "support"]
+    },
+    {
+      "name": "quote",
+      "categories": ["Formatting"],
+      "description": "Indicates the ability to add a quotation style",
+      "keywords": ["quotation", "mark", "markdown"]
     },
     {
       "name": "reddit",
@@ -1470,6 +1602,12 @@
       "keywords": ["cart", "buying"]
     },
     {
+      "name": "shopping-bag-fill",
+      "categories": ["Commerce"],
+      "description": "Indicates a shopping bag on shopping experience.",
+      "keywords": ["cart", "buying"]
+    },
+    {
       "name": "shrink",
       "categories": [],
       "description": "Description pending",
@@ -1558,6 +1696,18 @@
       "categories": [],
       "description": "Description pending",
       "keywords": []
+    },
+    {
+      "name": "square-plus",
+      "categories": ["navigation"],
+      "description": "Indicates the ability to create or add content.",
+      "keywords": ["add", "create", "new"]
+    },
+    {
+      "name": "square-plus-fill",
+      "categories": ["navigation"],
+      "description": "Indicates the ability to create or add content.",
+      "keywords": ["add", "create", "new"]
     },
     {
       "name": "star",
@@ -1723,6 +1873,12 @@
       "keywords": ["kerning"]
     },
     {
+      "name": "threads",
+      "categories": ["Logo"],
+      "description": "Indicates branding for the threads app",
+      "keywords": ["ig", "instagram"]
+    },
+    {
       "name": "thumbs-down",
       "categories": ["Reactions and ratings"],
       "description": "Indicates a dislike reaction",
@@ -1751,6 +1907,12 @@
       "categories": ["Ads and measurement"],
       "description": "Indicates trends",
       "keywords": ["arrow up"]
+    },
+    {
+      "name": "underline",
+      "categories": ["Formatting"],
+      "description": "Indicates the ability to underline text",
+      "keywords": ["font", "markdown"]
     },
     {
       "name": "upload-feed",
@@ -1793,6 +1955,12 @@
       "categories": ["Utility and tools"],
       "description": "Indicates the ability to change the view type to default",
       "keywords": ["square", "grid"]
+    },
+    {
+      "name": "view-type-default-fill",
+      "categories": ["Toggle"],
+      "description": "Indicates the ability to change the view type to default.",
+      "keywords": ["square", "grid", "categories"]
     },
     {
       "name": "view-type-dense",

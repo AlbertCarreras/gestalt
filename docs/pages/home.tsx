@@ -1,4 +1,4 @@
-import { Box, ButtonLink, Flex, Heading, Text } from 'gestalt';
+import { Box, Flex, Heading, Text } from 'gestalt';
 import {
   TOKEN_COLOR_BLUE_SKYCICLE_450,
   TOKEN_COLOR_TEAL_SPABATTICAL_450,
@@ -12,7 +12,6 @@ import Design from '../graphics/home-page/design.svg';
 import Development from '../graphics/home-page/development.svg';
 import HeroGraphic from '../graphics/home-page/HeroGraphic';
 import HowToWork from '../graphics/home-page/how-to-work-with-us.svg';
-import Roadmap from '../graphics/home-page/roadmap.svg';
 
 export default function HomePage() {
   return (
@@ -35,8 +34,6 @@ export default function HomePage() {
                   We’re here to help you build experiences that inspire people to create the life
                   they love
                 </Text>
-
-                <ButtonLink href="/whats_new" text="See what's new" />
               </Flex>
               <Box
                 alignItems="center"
@@ -95,15 +92,6 @@ export default function HomePage() {
               href="/foundations/overview"
               image={<Color />}
               title="Foundations"
-            />
-
-            <IllustrationCard
-              backgroundColor={TOKEN_COLOR_TEAL_SPABATTICAL_450}
-              description="What we plan to build and update in the short and long term"
-              headingLevel={3}
-              href="/roadmap"
-              image={<Roadmap />}
-              title="Road map"
             />
           </IllustrationSection>
         </Flex>

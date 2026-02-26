@@ -41,7 +41,6 @@ const webComponents = [
   'pog',
   'popover',
   'pulsar',
-  'radiobutton',
   'radiogroup',
   'searchfield',
   'segmentedcontrol',
@@ -116,11 +115,6 @@ const color = ['color_examples', 'color_palette', 'color_usage'].map((item) => (
 }));
 
 const misc = [
-  {
-    source: '/',
-    destination: '/home',
-    permanent: false,
-  },
   {
     source: '/component_overview',
     destination: '/web/overview',
@@ -237,6 +231,12 @@ const misc = [
     permanent: true,
   },
   {
+    source: '/foundations/iconography/library',
+    destination: 'http://pinch.pinadmin.com/iconLibrary',
+    basePath: false,
+    permanent: true,
+  },
+  {
     source: '/iconography',
     destination: '/foundations/iconography/usage',
     permanent: true,
@@ -252,6 +252,16 @@ const misc = [
     permanent: true,
   },
   {
+    source: '/roadmap',
+    destination: '/home',
+    permanent: true,
+  },
+  {
+    source: '/whats_new',
+    destination: '/home',
+    permanent: true,
+  },
+  {
     source: '/tooling',
     destination: '/get_started/developers/tooling/web',
     permanent: true,
@@ -264,6 +274,16 @@ const misc = [
   {
     source: '/web/module',
     destination: '/web/accordion',
+    permanent: true,
+  },
+  {
+    source: '/web/radiobutton',
+    destination: '/web/radiogroup',
+    permanent: true,
+  },
+  {
+    source: '/web/popovereducational',
+    destination: '/web/popovermessage',
     permanent: true,
   },
   {
@@ -294,26 +314,6 @@ const misc = [
   {
     source: '/web/callout',
     destination: '/web/bannercallout',
-    permanent: true,
-  },
-  {
-    source: '/ios/card/card',
-    destination: '/ios/module/module',
-    permanent: true,
-  },
-  {
-    source: '/ios/card/card.header',
-    destination: '/ios/module/module.header',
-    permanent: true,
-  },
-  {
-    source: '/ios/card/card.boards',
-    destination: '/ios/module/module.boards',
-    permanent: true,
-  },
-  {
-    source: '/ios/card/card.pins',
-    destination: '/ios/module/module.pins',
     permanent: true,
   },
 ];

@@ -3,6 +3,7 @@
  */
 import { Cache } from './Cache';
 import { Position } from './types';
+import Masonry from '../Masonry';
 
 function isBelowArea(area: { left: number; right: number }, position: Position) {
   return position.left < area.right && position.left + position.width > area.left;
@@ -47,11 +48,11 @@ function getDelta(
 function getNewDelta<T>({
   multicolumCurrentPosition,
   allPreviousItems,
-  gutterWidth,
+  gutter,
 }: {
   multicolumCurrentPosition: Position;
   allPreviousItems: ReadonlyArray<{ item: T; position: Position }>;
-  gutterWidth: number;
+  gutter: number;
 }): number {
   let closestItem: { item: T; position: Position };
   allPreviousItems.forEach(({ item, position }) => {
@@ -60,8 +61,10 @@ function getNewDelta<T>({
     const currentItemLeftLimit = position.left;
     const currentItemRightLimit = position.left + position.width;
     const itemIsAboveMulticolumn =
-      multiColumnLeftLimit <= currentItemLeftLimit &&
-      multiColumnRightLimit >= currentItemRightLimit;
+      (multiColumnLeftLimit <= currentItemLeftLimit &&
+        multiColumnRightLimit > currentItemLeftLimit) ||
+      (multiColumnLeftLimit < currentItemRightLimit &&
+        multiColumnRightLimit >= currentItemRightLimit);
 
     if (itemIsAboveMulticolumn) {
       if (
@@ -80,7 +83,7 @@ function getNewDelta<T>({
     closestItem!.position.top +
     closestItem!.position.height -
     multicolumCurrentPosition.top +
-    gutterWidth;
+    gutter;
   return actualDelta;
 }
 
@@ -90,16 +93,21 @@ function recalcHeights<T>({
   newHeight,
   positionStore,
   measurementStore,
-  gutterWidth,
+  gutter,
 }: {
   items: ReadonlyArray<T>;
   changedItem: T;
   newHeight: number;
   positionStore: Cache<T, Position>;
   measurementStore: Cache<T, number>;
-  gutterWidth: number;
+  gutter: number;
 }): boolean {
   const changedItemPosition = positionStore.get(changedItem);
+  const positionStoreOriginal: Cache<T, Position> = Masonry.createMeasurementStore();
+  items.forEach((item) => {
+    const position = positionStore.get(item);
+    positionStoreOriginal.set(item, { ...position } as Position);
+  });
 
   if (
     !changedItemPosition ||
@@ -146,9 +154,12 @@ function recalcHeights<T>({
           // Check all items above to check if movement is necessary
           const allPreviousItems = items
             .map((i) => {
-              const p = positionStore.get(i);
-              return p && p.top < multicolumCurrentPosition.top
-                ? { item: i, position: p }
+              const originalPosition = positionStoreOriginal.get(i);
+              const newPosition = positionStore.get(i);
+              return originalPosition &&
+                newPosition &&
+                originalPosition.top < multicolumCurrentPosition.top
+                ? { item: i, position: newPosition }
                 : undefined;
             })
             .filter((itemPosition) => !!itemPosition)
@@ -157,7 +168,7 @@ function recalcHeights<T>({
           const newDelta = getNewDelta({
             multicolumCurrentPosition,
             allPreviousItems,
-            gutterWidth,
+            gutter,
           });
           deltasStack.push({
             left: position.left,

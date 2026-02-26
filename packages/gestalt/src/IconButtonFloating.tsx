@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import Box from './Box';
 import InternalIconButton from './IconButton/InternalIconButton';
 import icons from './icons/index';
-import useInExperiment from './useInExperiment';
+import useExperimentalTheme from './utils/useExperimentalTheme';
 import { Indexable } from './zIndex';
 
 type Props = {
@@ -33,7 +33,7 @@ type Props = {
    */
   disabled?: boolean;
   /**
-   * Icon displayed in IconButtonFloating to convey the behavior of the component. Refer to our [iconography library](https://gestalt.pinterest.systems/foundations/iconography/library) to see available icons.
+   * Icon displayed in IconButtonFloating to convey the behavior of the component. Refer to our [iconography library](http://pinch.pinadmin.com/iconLibrary) to see available icons.
    */
   icon: keyof typeof icons;
   /**
@@ -85,26 +85,23 @@ const IconButtonFloatingWithForwardRef = forwardRef<HTMLButtonElement, Props>(
     }: Props,
     ref,
   ) {
-    const isInVRExperiment = useInExperiment({
-      webExperimentName: 'web_gestalt_visualrefresh',
-      mwebExperimentName: 'web_gestalt_visualrefresh',
-    });
+    const theme = useExperimentalTheme();
 
     return (
-      <Box borderStyle="shadow" color="default" rounding={isInVRExperiment ? 4 : 'circle'}>
+      <Box borderStyle="shadow" color="default" rounding={theme.MAIN ? 4 : 'circle'}>
         <InternalIconButton
           ref={ref}
           accessibilityControls={accessibilityControls}
           accessibilityExpanded={accessibilityExpanded}
           accessibilityLabel={accessibilityLabel}
           accessibilityPopupRole={accessibilityPopupRole}
-          bgColor={isInVRExperiment ? 'elevation' : 'transparent'}
+          bgColor={theme.MAIN ? 'elevation' : 'transparent'}
           dangerouslySetSvgPath={dangerouslySetSvgPath}
           disabled={disabled}
           icon={icon}
           onClick={onClick}
           selected={selected}
-          size={isInVRExperiment ? 56 : 'xl'}
+          size={theme.MAIN ? 56 : 'xl'}
           tooltip={tooltip}
         />
       </Box>

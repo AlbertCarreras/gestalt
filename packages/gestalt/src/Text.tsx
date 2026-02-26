@@ -3,7 +3,7 @@ import cx from 'classnames';
 import styles from './Text.css';
 import { semanticColors } from './textTypes';
 import typographyStyle from './Typography.css';
-import useInExperiment from './useInExperiment';
+import useExperimentalTheme from './utils/useExperimentalTheme';
 
 function isNotNullish(val?: number | null): boolean {
   return val !== null && val !== undefined;
@@ -42,6 +42,10 @@ type Props = {
    * Available for testing purposes, if needed. Consider [better queries](https://testing-library.com/docs/queries/about/#priority) before using this prop.
    */
   dataTestId?: string;
+  /**
+   * A unique identifier for the element.
+   */
+  id?: string;
   /**
    * Indicates how the text should flow with the surrounding content. See the [block vs inline variant](https://gestalt.pinterest.systems/web/text#Block-vs.-inline) for more details.
    */
@@ -92,6 +96,7 @@ const TextWithForwardRef = forwardRef<HTMLDivElement, Props>(function Text(
     children,
     color = 'default',
     dataTestId,
+    id,
     inline = false,
     italic = false,
     lineClamp,
@@ -105,10 +110,7 @@ const TextWithForwardRef = forwardRef<HTMLDivElement, Props>(function Text(
 ): ReactElement {
   const colorClass = semanticColors.includes(color) && styles[color];
 
-  const isInVRExperiment = useInExperiment({
-    webExperimentName: 'web_gestalt_visualrefresh',
-    mwebExperimentName: 'web_gestalt_visualrefresh',
-  });
+  const theme = useExperimentalTheme();
 
   const getWordBreakStyle = (): string | undefined => {
     if (overflow === 'breakAll') {
@@ -138,29 +140,25 @@ const TextWithForwardRef = forwardRef<HTMLDivElement, Props>(function Text(
     underline && styles.underline,
     isNotNullish(lineClamp) && typographyStyle.lineClamp,
     {
-      [styles.Text]: !isInVRExperiment,
-      [typographyStyle[`fontSize${size}`]]: !isInVRExperiment,
-      [typographyStyle.fontWeightSemiBold]: !isInVRExperiment && weight === 'bold',
-      [typographyStyle.fontWeightNormal]: !isInVRExperiment && weight === 'normal',
-      [styles.TextBody]: isInVRExperiment,
-      [styles.lg]: isInVRExperiment && (size === '400' || size === '500' || size === '600'),
-      [styles.md]: isInVRExperiment && size === '300',
-      [styles.sm]: isInVRExperiment && size === '200',
-      [styles.xs]: isInVRExperiment && size === '100',
+      [styles.Text]: !theme.MAIN,
+      [typographyStyle[`fontSize${size}`]]: !theme.MAIN,
+      [typographyStyle.fontWeightSemiBold]: !theme.MAIN && weight === 'bold',
+      [typographyStyle.fontWeightNormal]: !theme.MAIN && weight === 'normal',
+      [styles.TextBody]: theme.MAIN,
+      [styles.lg]: theme.MAIN && (size === '400' || size === '500' || size === '600'),
+      [styles.md]: theme.MAIN && size === '300',
+      [styles.sm]: theme.MAIN && size === '200',
+      [styles.xs]: theme.MAIN && size === '100',
       [styles.lgDefault]:
-        isInVRExperiment &&
-        (size === '400' || size === '500' || size === '600') &&
-        weight === 'normal',
-      [styles.mdDefault]: isInVRExperiment && size === '300' && weight === 'normal',
-      [styles.smDefault]: isInVRExperiment && size === '200' && weight === 'normal',
-      [styles.xsDefault]: isInVRExperiment && size === '100' && weight === 'normal',
+        theme.MAIN && (size === '400' || size === '500' || size === '600') && weight === 'normal',
+      [styles.mdDefault]: theme.MAIN && size === '300' && weight === 'normal',
+      [styles.smDefault]: theme.MAIN && size === '200' && weight === 'normal',
+      [styles.xsDefault]: theme.MAIN && size === '100' && weight === 'normal',
       [styles.lgEmphasis]:
-        isInVRExperiment &&
-        (size === '400' || size === '500' || size === '600') &&
-        weight === 'bold',
-      [styles.mdEmphasis]: isInVRExperiment && size === '300' && weight === 'bold',
-      [styles.smEmphasis]: isInVRExperiment && size === '200' && weight === 'bold',
-      [styles.xsEmphasis]: isInVRExperiment && size === '100' && weight === 'bold',
+        theme.MAIN && (size === '400' || size === '500' || size === '600') && weight === 'bold',
+      [styles.mdEmphasis]: theme.MAIN && size === '300' && weight === 'bold',
+      [styles.smEmphasis]: theme.MAIN && size === '200' && weight === 'bold',
+      [styles.xsEmphasis]: theme.MAIN && size === '100' && weight === 'bold',
     },
   );
 
@@ -170,6 +168,7 @@ const TextWithForwardRef = forwardRef<HTMLDivElement, Props>(function Text(
     <Tag
       className={cs}
       data-test-id={dataTestId}
+      id={id}
       title={
         title ?? (isNotNullish(lineClamp) && typeof children === 'string' ? children : undefined)
       }

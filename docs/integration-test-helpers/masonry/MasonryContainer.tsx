@@ -1,4 +1,8 @@
 import { Component, ComponentProps, createRef, ReactElement } from 'react';
+import {
+  ColumnSpanConfig,
+  ResponsiveModuleConfig,
+} from 'packages/gestalt/src/Masonry/multiColumnLayout';
 import { Masonry, MasonryV2 } from 'gestalt';
 import ExampleGridItem from './ExampleGridItem';
 import getClassicGridServerStyles from './getClassicGridServerStyles';
@@ -45,6 +49,10 @@ type Props<T> = {
   manualFetch?: boolean;
   // External measurement store.
   measurementStore: MasonryProps<T>['measurementStore'];
+  // Enable new multi column layout algorithm
+  multiColPositionAlgoV2?: boolean;
+  // Tests multicolumn item position inside the feed.
+  multiColTest?: boolean;
   // Prevent scrolling on Masonry
   noScroll?: boolean;
   // Positions the element inside of a relative container, offset from the top.
@@ -343,6 +351,7 @@ export default class MasonryContainer extends Component<Props<Record<any, any>>,
       virtualBoundsBottom,
       virtualBoundsTop,
       virtualize,
+      multiColPositionAlgoV2,
     } = this.props;
 
     const { hasScrollContainer, mountGrid, items } = this.state;
@@ -402,7 +411,6 @@ export default class MasonryContainer extends Component<Props<Record<any, any>>,
         }
       }
     } else {
-      // @ts-expect-error - TS2322 - Type '() => Window | undefined' is not assignable to type '() => HTMLElement'.
       dynamicGridProps.scrollContainer = typeof window === 'undefined' ? undefined : () => window;
     }
 
@@ -417,15 +425,19 @@ export default class MasonryContainer extends Component<Props<Record<any, any>>,
             _dynamicHeights={dynamicHeights || dynamicHeightsV2}
             _dynamicHeightsV2Experiment={dynamicHeightsV2}
             _getColumnSpanConfig={(item) => {
-              const columnSpan = item.columnSpan as number | undefined;
+              const columnSpan = item.columnSpan as ColumnSpanConfig | undefined;
               return columnSpan ?? 1;
             }}
+            _getResponsiveModuleConfigForSecondItem={(item) =>
+              item?.responsiveModuleConfig as ResponsiveModuleConfig
+            }
             _logTwoColWhitespace={
               logWhitespace
                 ? // eslint-disable-next-line no-console
                   (whitespace) => console.log('Whitespace above 2-col module:', whitespace)
                 : undefined
             }
+            _multiColPositionAlgoV2={multiColPositionAlgoV2}
             columnWidth={columnWidth}
             gutterWidth={0}
             items={items}

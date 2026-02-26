@@ -23,8 +23,8 @@ import BannerUpsell from '../../graphics/general/BannerUpsell.svg';
 import Button from '../../graphics/general/Button.svg';
 import ButtonGroup from '../../graphics/general/ButtonGroup.svg';
 import ButtonLink from '../../graphics/general/ButtonLink.svg';
+import ButtonSocial from '../../graphics/general/ButtonSocial.svg';
 import ButtonToggle from '../../graphics/general/ButtonToggle.svg';
-import Card from '../../graphics/general/Card.svg';
 import ChartGraph from '../../graphics/general/ChartGraph.svg';
 import Checkbox from '../../graphics/general/Checkbox.svg';
 import Collage from '../../graphics/general/Collage.svg';
@@ -45,7 +45,6 @@ import Image from '../../graphics/general/Image.svg';
 import GestaltLabel from '../../graphics/general/Label.svg';
 import GestaltLink from '../../graphics/general/Link.svg';
 import List from '../../graphics/general/List.svg';
-import ListAction from '../../graphics/general/ListAction.svg';
 import Masonry from '../../graphics/general/Masonry.svg';
 import Modal from '../../graphics/general/Modal.svg';
 import ModalAlert from '../../graphics/general/ModalAlert.svg';
@@ -53,13 +52,12 @@ import NumberField from '../../graphics/general/NumberField.svg';
 import OverlayPanel from '../../graphics/general/OverlayPanel.svg';
 import PageHeader from '../../graphics/general/PageHeader.svg';
 import Popover from '../../graphics/general/Popover.svg';
-import PopoverEducational from '../../graphics/general/PopoverEducational.svg';
+import PopoverMessage from '../../graphics/general/PopoverMessage.svg';
 import Pulsar from '../../graphics/general/Pulsar.svg';
 import RadioGroup from '../../graphics/general/RadioGroup.svg';
 import SearchField from '../../graphics/general/SearchField.svg';
 import SearchGuide from '../../graphics/general/SearchGuide.svg';
 import SearchGuideLink from '../../graphics/general/SearchGuideLink.svg';
-import SegmentedControl from '../../graphics/general/SegmentedControl.svg';
 import SelectList from '../../graphics/general/SelectList.svg';
 import SheetMobile from '../../graphics/general/SheetMobile.svg';
 import SideNavigation from '../../graphics/general/SideNavigation.svg';
@@ -137,34 +135,6 @@ const componentData: ReadonlyArray<ComponentData> = [
           status: 'ready',
         },
       },
-      android: {
-        name: 'Avatar',
-        visual: {
-          svg: <Avatar />,
-        },
-        alias: ['Pinner rep', 'Persona', 'User Image', 'Identifier', 'Identicon'],
-        description: 'Avatar is used to represent a user.',
-        category: ['Avatars'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
-      ios: {
-        name: 'Avatar',
-        visual: {
-          svg: <Avatar />,
-        },
-        alias: ['Pinner rep', 'Persona', 'User Image', 'Identifier', 'Identicon'],
-        description: 'Avatar is used to represent a user.',
-        category: ['Avatars'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
     },
   },
   {
@@ -200,50 +170,6 @@ const componentData: ReadonlyArray<ComponentData> = [
           status: 'ready',
         },
       },
-      android: {
-        name: 'AvatarGroup',
-        visual: {
-          svg: <AvatarGroup />,
-        },
-        alias: [
-          'Pinner reps',
-          'Personas',
-          'Facepile',
-          'User Images',
-          'Identification Group',
-          'Identicons',
-        ],
-        description:
-          'AvatarGroup is used to both display a group of user avatars and, optionally, control actions related to the users group.',
-        category: ['Avatars'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
-      ios: {
-        name: 'AvatarGroup',
-        visual: {
-          svg: <AvatarGroup />,
-        },
-        alias: [
-          'Pinner reps',
-          'Personas',
-          'Facepile',
-          'User Images',
-          'Identification Group',
-          'Identicons',
-        ],
-        description:
-          'AvatarGroup is used to both display a group of user avatars and, optionally, control actions related to the users group.',
-        category: ['Avatars'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
     },
   },
   {
@@ -268,34 +194,6 @@ const componentData: ReadonlyArray<ComponentData> = [
           documentation: 'ready',
           figmaStatus: 'ready',
           responsive: 'ready',
-          status: 'ready',
-        },
-      },
-      android: {
-        name: 'Badge',
-        visual: {
-          svg: <Badge />,
-        },
-        alias: ['Lozenge', 'Label', 'Stamp', 'Flag'],
-        description: 'Badge is a label that indicates status or importance.',
-        category: ['Indicators'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
-      ios: {
-        name: 'Badge',
-        visual: {
-          svg: <Badge />,
-        },
-        alias: ['Lozenge', 'Label', 'Stamp', 'Flag'],
-        description: 'Badge is a label that indicates status or importance.',
-        category: ['Indicators'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
           status: 'ready',
         },
       },
@@ -446,34 +344,6 @@ const componentData: ReadonlyArray<ComponentData> = [
           status: 'ready',
         },
       },
-      android: {
-        name: 'Button',
-        visual: {
-          svg: <Button />,
-        },
-        alias: ['Action', 'CTA'],
-        description: 'Buttons allow users to perform actions within a surface.',
-        category: ['Actions'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
-      ios: {
-        name: 'Button',
-        visual: {
-          svg: <Button />,
-        },
-        alias: ['Action', 'CTA'],
-        description: 'Buttons allow users to perform actions within a surface.',
-        category: ['Actions'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
     },
   },
   {
@@ -520,27 +390,19 @@ const componentData: ReadonlyArray<ComponentData> = [
           status: 'ready',
         },
       },
-      android: {
-        name: 'ButtonGroup',
+    },
+  },
+  {
+    id: 'ButtonSocial',
+    platform: {
+      web: {
+        name: 'ButtonSocial',
         visual: {
-          svg: <ButtonGroup />,
+          svg: <ButtonSocial />,
         },
-        alias: ['Button Row', 'Action Bar'],
-        description: 'ButtonGroup is used to display a series of buttons.',
-        category: ['Actions'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
-      ios: {
-        name: 'ButtonGroup',
-        visual: {
-          svg: <ButtonGroup />,
-        },
-        alias: ['Button Row', 'Action Bar'],
-        description: 'ButtonGroup is used to display a series of buttons.',
+        alias: ['Social', 'Action Button'],
+        description:
+          'ButtonSocial should be used only to enable users to sign-up or sign-in to Pinterest using other trusted services.',
         category: ['Actions'],
         status: {
           documentation: 'ready',
@@ -560,63 +422,12 @@ const componentData: ReadonlyArray<ComponentData> = [
         },
         alias: ['Toggle', 'Action Button', 'Toggle Switch'],
         description:
-          'The ButtonToggle is a larger alternative to selection components such as Checkbox, RadioButton, and Switch.',
+          'The ButtonToggle is a larger alternative to selection components such as Checkbox, RadioGroup, and Switch.',
         category: ['Actions'],
         status: {
           documentation: 'ready',
           figmaStatus: 'ready',
           status: 'ready',
-        },
-      },
-      android: {
-        name: 'ButtonToggle',
-        visual: {
-          svg: <ButtonToggle />,
-        },
-        alias: ['Toggle', 'Action Button', 'Toggle Switch'],
-        description:
-          'The ButtonToggle is a larger alternative to selection components such as Checkbox, RadioButton, and Switch.',
-        category: ['Actions'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
-      ios: {
-        name: 'ButtonToggle',
-        visual: {
-          svg: <ButtonToggle />,
-        },
-        alias: ['Toggle', 'Action Button', 'Toggle Switch'],
-        description:
-          'The ButtonToggle is a larger alternative to selection components such as Checkbox, RadioButton, and Switch.',
-        category: ['Actions'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
-    },
-  },
-  {
-    id: 'Card',
-    platform: {
-      ios: {
-        name: 'Card',
-        visual: {
-          svg: <Card />,
-        },
-        path: '/ios/card/card',
-        alias: ['Entry Card', 'Accordion', 'Panel', 'Teaser'],
-        description:
-          'Card is a semi-modular container used to house Card.Header and a variant of the available preview blocks.',
-        category: ['Pins and imagery'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'planned',
         },
       },
     },
@@ -670,32 +481,6 @@ const componentData: ReadonlyArray<ComponentData> = [
           documentation: 'ready',
           figmaStatus: 'ready',
           responsive: 'ready',
-          status: 'ready',
-        },
-      },
-      android: {
-        name: 'Checkbox',
-        visual: {
-          svg: <Checkbox />,
-        },
-        description: 'Checkbox is used for multiple choice selection.',
-        category: ['Controls'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
-      ios: {
-        name: 'Checkbox',
-        visual: {
-          svg: <Checkbox />,
-        },
-        description: 'Checkbox is used for multiple choice selection.',
-        category: ['Controls'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
           status: 'ready',
         },
       },
@@ -1170,36 +955,6 @@ const componentData: ReadonlyArray<ComponentData> = [
           status: 'ready',
         },
       },
-      android: {
-        name: 'Icon',
-        visual: {
-          svg: <Icon />,
-        },
-        alias: ['<svg>', 'Symbol', 'Glyph'],
-        description:
-          'Icons are the symbolic representation of an action or information, providing visual context and improving usability.',
-        category: ['Pins and imagery'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
-      ios: {
-        name: 'Icon',
-        visual: {
-          svg: <Icon />,
-        },
-        alias: ['<svg>', 'Symbol', 'Glyph'],
-        description:
-          'Icons are the symbolic representation of an action or information, providing visual context and improving usability.',
-        category: ['Pins and imagery'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
     },
   },
   {
@@ -1225,36 +980,6 @@ const componentData: ReadonlyArray<ComponentData> = [
           documentation: 'ready',
           figmaStatus: 'ready',
           responsive: 'ready',
-          status: 'ready',
-        },
-      },
-      android: {
-        name: 'IconButton',
-        visual: {
-          svg: <IconButton />,
-        },
-        alias: ['Glyph button', 'Condensed Button'],
-        description:
-          'IconButton allows users to take actions and make choices with a single click or tap.',
-        category: ['Actions'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
-      ios: {
-        name: 'IconButton',
-        visual: {
-          svg: <IconButton />,
-        },
-        alias: ['Glyph button', 'Condensed Button'],
-        description:
-          'IconButton allows users to take actions and make choices with a single click or tap.',
-        category: ['Actions'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
           status: 'ready',
         },
       },
@@ -1309,36 +1034,6 @@ const componentData: ReadonlyArray<ComponentData> = [
           documentation: 'ready',
           figmaStatus: 'ready',
           responsive: 'ready',
-          status: 'ready',
-        },
-      },
-      android: {
-        name: 'IconButtonFloating',
-        visual: {
-          svg: <IconButtonFloating />,
-        },
-        alias: ['Glyph button', 'Floating action button', 'FAB', 'Quick create'],
-        description:
-          'IconButtonFloating provides an action that floats over the content and remains in place when scrolled.',
-        category: ['Actions'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
-      ios: {
-        name: 'IconButtonFloating',
-        visual: {
-          svg: <IconButtonFloating />,
-        },
-        alias: ['Glyph button', 'Floating action button', 'FAB', 'Quick create'],
-        description:
-          'IconButtonFloating provides an action that floats over the content and remains in place when scrolled.',
-        category: ['Actions'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
           status: 'ready',
         },
       },
@@ -1500,41 +1195,6 @@ const componentData: ReadonlyArray<ComponentData> = [
           figmaStatus: 'notAvailable',
           responsive: 'ready',
           status: 'ready',
-        },
-      },
-    },
-  },
-  {
-    id: 'ListAction',
-    platform: {
-      android: {
-        name: 'ListAction',
-        visual: {
-          svg: <ListAction />, // THIS IS WRONG
-        },
-        alias: ['Table', 'List', 'List item', 'Menu'],
-        description:
-          'ListAction is a continuous vertical group of list items that can include text, icons, images and actions.',
-        category: ['Structure'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
-      ios: {
-        name: 'ListAction',
-        visual: {
-          svg: <ListAction />, // THIS IS WRONG
-        },
-        alias: ['Table', 'List', 'List item', 'Menu'],
-        description:
-          'ListAction is a continuous vertical group of list items that can include text, icons, images and actions.',
-        category: ['Structure'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'planned',
         },
       },
     },
@@ -1818,28 +1478,21 @@ const componentData: ReadonlyArray<ComponentData> = [
           mobileAdaptive: 'planned',
           responsive: 'ready',
           status: 'ready',
-          knownIssues: [
-            {
-              title: 'Incorrect positioning and dimensions',
-              description:
-                'Popover accumulates many known issues. It is a custom built component. We are in the process of exploring replacing it with a battle-tested third-party library. Check the linked document to see if your issue is already documented.',
-              internalDocUrl: 'http://pinch.pinadmin.com/popover_history',
-            },
-          ],
         },
       },
     },
   },
   {
-    id: 'PopoverEducational',
+    id: 'PopoverMessage',
     platform: {
       web: {
-        name: 'PopoverEducational',
+        alias: ['PopoverEducational', 'PopoverNotification'],
+        name: 'PopoverMessage',
         visual: {
-          svg: <PopoverEducational />,
+          svg: <PopoverMessage />,
         },
         description:
-          'PopoverEducational is a floating container that introduces users to elements on the screen. Used for education or onboarding experiences.',
+          'PopoverMessage is a floating container that introduces users to elements on the screen. Used for education or onboarding experiences.',
         category: ['Help and guidance'],
         status: {
           accessible: {
@@ -1853,20 +1506,6 @@ const componentData: ReadonlyArray<ComponentData> = [
           figmaStatus: 'ready',
           responsive: 'ready',
           status: 'ready',
-          knownIssues: [
-            {
-              title: 'Caret misalignment',
-              description:
-                "PopoverEducational's caret might appear misaligned when positioned below the element of reference.",
-              internalDocUrl: 'http://pinch.pinadmin.com/popover_history',
-            },
-            {
-              title: 'Incorrect positioning and dimensions',
-              description:
-                'PopoverEducational is built on top of Popover. Popover accumulates many known issues. It is a custom built component. We are in the process of exploring replacing it with a battle-tested third-party library. Check the linked document to see if your issue is already documented.',
-              internalDocUrl: 'http://pinch.pinadmin.com/popover_history',
-            },
-          ],
         },
       },
     },
@@ -1988,34 +1627,6 @@ const componentData: ReadonlyArray<ComponentData> = [
           status: 'ready',
         },
       },
-      android: {
-        name: 'SearchField',
-        visual: {
-          svg: <SearchField />,
-        },
-        alias: ['Search Box', 'Search Bar'],
-        description: 'SearchField allows users to search for free-form content.',
-        category: ['Fields and forms'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
-      ios: {
-        name: 'SearchField',
-        visual: {
-          svg: <SearchField />, // THIS IS WRONG
-        },
-        alias: ['Search Box', 'Search Bar'],
-        description: 'SearchField allows users to search for free-form content.',
-        category: ['Fields and forms'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
     },
   },
   {
@@ -2043,34 +1654,6 @@ const componentData: ReadonlyArray<ComponentData> = [
           status: 'ready',
         },
       },
-      android: {
-        name: 'SearchGuide',
-        visual: {
-          svg: <SearchGuide />,
-        },
-        alias: ['Search filters', 'Pivots', 'Vanilla guides'],
-        description: 'SearchGuide appends and refines a search query.',
-        category: ['Actions'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'partial',
-          status: 'ready',
-        },
-      },
-      ios: {
-        name: 'SearchGuide',
-        visual: {
-          svg: <SearchGuide />,
-        },
-        alias: ['Search filters', 'Pivots', 'Vanilla guides'],
-        description: 'SearchGuide appends and refines a search query.',
-        category: ['Actions'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'partial',
-          status: 'ready',
-        },
-      },
     },
   },
   {
@@ -2093,33 +1676,6 @@ const componentData: ReadonlyArray<ComponentData> = [
             a11yComprehension: 'ready',
           },
           documentation: 'ready',
-          figmaStatus: 'partial',
-          responsive: 'ready',
-          status: 'ready',
-        },
-      },
-    },
-  },
-  {
-    id: 'SegmentedControl',
-    platform: {
-      web: {
-        name: 'SegmentedControl',
-        visual: {
-          svg: <SegmentedControl />,
-        },
-        alias: ['Toggle Group'],
-        description: 'SegmentedControl may be used to group multiple selections.',
-        category: ['Navigation'],
-        status: {
-          accessible: {
-            summary: 'partial',
-            a11yVisual: 'ready',
-            a11yScreenreader: 'partial',
-            a11yNavigation: 'partial',
-            a11yComprehension: 'ready',
-          },
-          documentation: 'partial',
           figmaStatus: 'partial',
           responsive: 'ready',
           status: 'ready',
@@ -2178,36 +1734,6 @@ const componentData: ReadonlyArray<ComponentData> = [
           badge: 'Pilot',
           documentation: 'ready',
           status: 'ready',
-        },
-      },
-      android: {
-        name: 'Sheet',
-        visual: {
-          svg: <SheetMobile />, // THIS IS WRONG
-        },
-        alias: ['Panel', 'Dialog', 'Drawer', 'Tray'],
-        description:
-          'Sheets are bottom-anchored overlays that that allow the user to easily return to the previous screen. They are meant for temporary focused tasks. Sheets are the mobile equivalent of the modal or overlay on web.',
-        category: [],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
-      ios: {
-        name: 'Sheet',
-        visual: {
-          svg: <SheetMobile />, // THIS IS WRONG
-        },
-        alias: ['Panel', 'Dialog', 'Drawer', 'Tray'],
-        description:
-          'Sheets are bottom-anchored overlays that that allow the user to easily return to the previous screen. They are meant for temporary focused tasks. Sheets are the mobile equivalent of the modal or overlay on web.',
-        category: [],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'planned',
         },
       },
     },
@@ -2380,34 +1906,6 @@ const componentData: ReadonlyArray<ComponentData> = [
           status: 'ready',
         },
       },
-      android: {
-        name: 'Switch',
-        visual: {
-          svg: <Switch />,
-        },
-        alias: ['Toggle', 'Slide Toggle'],
-        description: 'Switch is used for single cell options that can be turned on and off only.',
-        category: ['Controls'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
-      ios: {
-        name: 'Switch',
-        visual: {
-          svg: <Switch />,
-        },
-        alias: ['Toggle', 'Slide Toggle'],
-        description: 'Switch is used for single cell options that can be turned on and off only.',
-        category: ['Controls'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
     },
   },
   {
@@ -2489,32 +1987,6 @@ const componentData: ReadonlyArray<ComponentData> = [
           documentation: 'ready',
           figmaStatus: 'ready',
           responsive: 'ready',
-          status: 'ready',
-        },
-      },
-      android: {
-        name: 'Tabs',
-        visual: {
-          svg: <Tabs />,
-        },
-        description: 'Tabs may be used navigate between multiple URLs.',
-        category: ['Navigation'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
-      ios: {
-        name: 'Tabs',
-        visual: {
-          svg: <Tabs />,
-        },
-        description: 'Tabs may be used navigate between multiple URLs.',
-        category: ['Navigation'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
           status: 'ready',
         },
       },
@@ -2636,36 +2108,6 @@ const componentData: ReadonlyArray<ComponentData> = [
           ],
         },
       },
-      android: {
-        name: 'Text',
-        visual: {
-          svg: <Text />,
-        },
-        alias: ['Copy, Subtext, Caption, Footer, Helper text'],
-        description:
-          'Text component is used for all representations of text on a surface. Text is based on Android typography guidelines.',
-        category: ['Text'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
-      ios: {
-        name: 'Text',
-        visual: {
-          svg: <Text />,
-        },
-        alias: ['Copy, Subtext, Caption, Footer, Helper text'],
-        description:
-          'Text component is used for all representations of text on a surface. Text is based on iOS typography guidelines.',
-        category: ['Text'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
     },
   },
   {
@@ -2693,34 +2135,6 @@ const componentData: ReadonlyArray<ComponentData> = [
           status: 'ready',
         },
       },
-      android: {
-        name: 'TextArea',
-        visual: {
-          svg: <TextArea />,
-        },
-        alias: ['Multi-line Input'],
-        description: 'TextArea allows for multi-line input.',
-        category: ['Fields and forms'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
-      ios: {
-        name: 'TextArea',
-        visual: {
-          svg: <TextArea />,
-        },
-        alias: ['Multi-line Input'],
-        description: 'TextArea allows for multi-line input.',
-        category: ['Fields and forms'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
     },
   },
   {
@@ -2745,34 +2159,6 @@ const componentData: ReadonlyArray<ComponentData> = [
           documentation: 'ready',
           figmaStatus: 'ready',
           responsive: 'ready',
-          status: 'ready',
-        },
-      },
-      android: {
-        name: 'TextField',
-        visual: {
-          svg: <TextField />,
-        },
-        alias: ['Text Input'],
-        description: 'TextField allows for multiple types of text input.',
-        category: ['Fields and forms'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
-      ios: {
-        name: 'TextField',
-        visual: {
-          svg: <TextField />,
-        },
-        alias: ['Text Input'],
-        description: 'TextField allows for multiple types of text input.',
-        category: ['Fields and forms'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
           status: 'ready',
         },
       },
@@ -2830,36 +2216,6 @@ const componentData: ReadonlyArray<ComponentData> = [
           documentation: 'ready',
           figmaStatus: 'ready',
           responsive: 'ready',
-          status: 'ready',
-        },
-      },
-      android: {
-        name: 'Toast',
-        visual: {
-          svg: <Toast />,
-        },
-        alias: ['Snackbar'],
-        description:
-          'Toasts educate users on the content of the screen, provide confirmation when people complete an action, or simply communicate a short message.',
-        category: ['Messaging'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
-          status: 'ready',
-        },
-      },
-      ios: {
-        name: 'Toast',
-        visual: {
-          svg: <Toast />,
-        },
-        alias: ['Snackbar'],
-        description:
-          'Toasts educate users on the content of the screen, provide confirmation when people complete an action, or simply communicate a short message.',
-        category: ['Messaging'],
-        status: {
-          documentation: 'ready',
-          figmaStatus: 'ready',
           status: 'ready',
         },
       },

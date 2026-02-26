@@ -33,6 +33,23 @@ describe('useDefaultLabelContext', () => {
             iconAccessibilityLabelWarning: 'Warning',
             iconAccessibilityLabelSuccess: 'Success',
           },
+          ButtonSocial: {
+            textLoginEmail: 'Login with Email',
+            textLoginFacebook: 'Login with Facebook',
+            textLoginGoogle: 'Login with Google',
+            textLoginApple: 'Login with Apple',
+            textLoginLine: 'Login with Line',
+            textContinueEmail: 'Continue with Email',
+            textContinueFacebook: 'Continue with Facebook',
+            textContinueGoogle: 'Continue with Google',
+            textContinueApple: 'Continue with Apple',
+            textContinueLine: 'Continue with Line',
+            textSignupEmail: 'Sign up with Email',
+            textSignupFacebook: 'Sign up with Facebook',
+            textSignupGoogle: 'Sign up with Google',
+            textSignupApple: 'Sign up with Apple',
+            textSignupLine: 'Sign up with Line',
+          },
           ChartGraph: {
             accessibilityLabelPrefixText: 'ChartGraph',
             defaultViewText: 'Default view mode',
@@ -97,6 +114,9 @@ describe('useDefaultLabelContext', () => {
             iconAccessibilityLabelRecommendation: 'Recommendation',
             iconAccessibilityLabelWarning: 'Warning',
             iconAccessibilityLabelSuccess: 'Success',
+          },
+          SearchField: {
+            accessibilityClearButtonLabel: 'Clear input',
           },
           Spinner: {
             accessibilityLabel: 'Loading',

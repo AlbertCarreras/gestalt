@@ -1,5 +1,5 @@
 import InternalIcon from './Icon/InternalIcon';
-import compactIconsVR from './icons-vr-theme/compact/index';
+import compactIconsClassic from './icons/compact/index';
 
 export type IconColor =
   | 'default'
@@ -36,9 +36,9 @@ type Props = {
   /**
    * SVG icon from the Gestalt icon library to use within Icon.
    *
-   * See the [icon library](https://gestalt.pinterest.systems/foundations/iconography/library) to explore available options.
+   * See the [icon library](http://pinch.pinadmin.com/iconLibrary) to explore available options.
    */
-  icon?: keyof typeof compactIconsVR;
+  icon?: keyof typeof compactIconsClassic;
   /**
    * Defines a new icon different from the built-in Gestalt icons.
    *
@@ -60,13 +60,13 @@ type Props = {
 };
 
 // @ts-expect-error - TS2322 - Type 'string[]' is not assignable to type 'readonly ("replace" | "search" | "link" | "text" | "dash" | "3D" | "3D-move" | "360" | "accessibility" | "ad" | "ad-group" | "add" | "add-circle" | "add-layout" | "add-pin" | "add-section" | ... 317 more ... | "wave")[]'.
-const IconNames: ReadonlyArray<keyof typeof compactIconsVR> = Object.keys(compactIconsVR);
+const IconNames: ReadonlyArray<keyof typeof compactIconsClassic> = Object.keys(compactIconsClassic);
 
 /**
  * [Icons](https://gestalt.pinterest.systems/web/icon) are the symbolic representation of an action or information, providing visual context and improving usability. These icons have a 16x16 viewboxes and are used in places where space is limited. Refer to your designer for guidance on when to use Compact Icons.
 
  *
- * See the [Iconography and SVG guidelines](https://gestalt.pinterest.systems/foundations/iconography/library) to explore the full icon library.
+ * See the [Iconography and SVG guidelines](http://pinch.pinadmin.com/iconLibrary) to explore the full icon library.
  *
  * ![Icon light mode](https://raw.githubusercontent.com/pinterest/gestalt/master/playwright/visual-test/Icon-list.spec.ts-snapshots/IconCompact-list-chromium-darwin.png)
  * ![Icon dark mode](https://raw.githubusercontent.com/pinterest/gestalt/master/playwright/visual-test/Icon-list-dark.spec.ts-snapshots/IconCompact-list-dark-chromium-darwin.png)

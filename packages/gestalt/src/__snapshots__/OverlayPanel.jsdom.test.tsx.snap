@@ -95,7 +95,7 @@ exports[`OverlayPanel renders OverlayPanel with confirmation modal 1`] = `
             >
               <div
                 aria-label="Popover"
-                class="relative maxDimensions minDimensions border primary rounding4"
+                class="relative maxDimensions minDimensions primary rounding4"
                 role="dialog"
                 style="max-width: 284px; overflow: auto;"
               >
@@ -245,7 +245,7 @@ exports[`OverlayPanel should render all props with nodes 1`] = `
                 class="box flexGrow paddingX600 paddingY600 xsDisplayFlex"
               >
                 <h1
-                  class="Heading fontSize500 default alignStart breakWord"
+                  class="Heading fontSize600 default alignStart breakWord"
                 >
                   OverlayPanel title
                 </h1>
@@ -347,7 +347,7 @@ exports[`OverlayPanel should render all props with render props 1`] = `
                 class="box flexGrow paddingX600 paddingY600 xsDisplayFlex"
               >
                 <h1
-                  class="Heading fontSize500 default alignStart breakWord"
+                  class="Heading fontSize600 default alignStart breakWord"
                 >
                   OverlayPanel title
                 </h1>

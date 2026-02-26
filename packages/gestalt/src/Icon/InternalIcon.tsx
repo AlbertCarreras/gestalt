@@ -3,9 +3,6 @@ import { flipOnRtlIconNames, swapOnRtlIconNames } from './RTLIconList';
 import styles from '../Icon.css';
 import compactIconsClassic from '../icons/compact/index';
 import icons from '../icons/index';
-import compactIconsVR from '../icons-vr-theme/compact/index';
-import vrIcons from '../icons-vr-theme/index';
-import useInExperiment from '../useInExperiment';
 
 export type IconColor =
   | 'default'
@@ -22,8 +19,9 @@ export type IconColor =
   | 'light'
   | 'dark';
 
-type IconName = keyof typeof icons | keyof typeof compactIconsVR;
+type IconName = keyof typeof icons | keyof typeof compactIconsClassic;
 type Props = {
+  accessibilityDescribedby?: string;
   accessibilityLabel: string;
   color?: IconColor;
   dataTestId?: string;
@@ -35,19 +33,8 @@ type Props = {
   size?: number | string;
 };
 
-// @ts-expect-error - TS2322 - Type 'string[]' is not assignable to type 'readonly ("replace" | "search" | "link" | "text" | "dash" | "3D" | "3D-move" | "360" | "accessibility" | "ad" | "ad-group" | "add" | "add-circle" | "add-layout" | "add-pin" | "add-section" | ... 317 more ... | "wave")[]'.
-const IconNames: ReadonlyArray<IconName> = Object.keys(icons);
-
-/**
- * [Icons](https://gestalt.pinterest.systems/web/icon) are the symbolic representation of an action or information, providing visual context and improving usability.
- *
- * See the [Iconography and SVG guidelines](https://gestalt.pinterest.systems/foundations/iconography/library) to explore the full icon library.
- *
- * ![Icon light mode](https://raw.githubusercontent.com/pinterest/gestalt/master/playwright/visual-test/Icon-list.spec.ts-snapshots/Icon-list-chromium-darwin.png)
- * ![Icon dark mode](https://raw.githubusercontent.com/pinterest/gestalt/master/playwright/visual-test/Icon-list-dark.spec.ts-snapshots/Icon-list-dark-chromium-darwin.png)
- *
- */
 function InternalIcon({
+  accessibilityDescribedby,
   accessibilityLabel,
   color = 'subtle',
   dangerouslySetSvgPath,
@@ -62,25 +49,11 @@ function InternalIcon({
     styles.icon,
     { [styles.iconBlock]: !inline },
   );
-  const isInExperiment = useInExperiment({
-    webExperimentName: 'web_gestalt_visualrefresh',
-    mwebExperimentName: 'web_gestalt_visualrefresh',
-  });
 
   const getIconPath = (iconToUse?: IconName) => {
     const iconName = iconToUse;
 
     if (!iconName) return undefined;
-
-    if (isInExperiment) {
-      if (iconName in vrIcons) {
-        return vrIcons[iconName as keyof typeof vrIcons];
-      }
-
-      if (iconName in compactIconsVR) {
-        return compactIconsVR[iconName as keyof typeof compactIconsVR];
-      }
-    }
 
     if (iconName in compactIconsClassic) {
       return compactIconsClassic[iconName as keyof typeof compactIconsClassic];
@@ -126,13 +99,14 @@ function InternalIcon({
   let viewBox = '0 0 24 24';
 
   // if it's a component icon use a 16x16 view box
-  if (iconToUse && iconToUse in compactIconsVR) {
+  if (iconToUse && iconToUse in compactIconsClassic) {
     viewBox = '0 0 16 16';
   }
 
   return (
     // @ts-expect-error - TS2322 - Type '{ children: Element; "aria-hidden": true | null; "aria-label": string; className: string; height: string | number; role: "img"; viewBox: string; width: string | number; }' is not assignable to type 'SVGProps<SVGSVGElement>'.
     <svg
+      aria-describedby={accessibilityDescribedby}
       aria-hidden={ariaHidden}
       aria-label={accessibilityLabel}
       className={cs}
@@ -146,8 +120,6 @@ function InternalIcon({
     </svg>
   );
 }
-
-InternalIcon.icons = IconNames;
 
 InternalIcon.displayName = 'InternalIcon';
 
